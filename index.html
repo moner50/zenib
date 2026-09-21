@@ -1,244 +1,131 @@
-<!DOCTYPE html>
-<!--
-  ============================================================
-  رسالة حب تفاعلية — 8 سنين في صفحة واحدة.
-
-  طريقة التشغيل: افتح index.html بالضغط عليه مرتين. مش محتاج سيرفر.
-
-  فين تعدل إيه
-  -------------
-  • الاسم / اللقب / ملف الموسيقى / الذكريات / الرسالة الأخيرة
-      → أول script.js (كائن CONFIG)
-  • الألوان → أول style.css (بلوك :root)
-  • نصوص الأقسام → هنا في index.html جوه كل <section>
-  • الموسيقى → حط أغنية أصالة في:  assets/music.mp3
-  ============================================================
--->
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#050b1c">
-  <meta name="color-scheme" content="dark">
-  <title>وزتي... حكاية 8 سنين</title>
-
-  <!-- خطوط جوجل لو فيه إنترنت. لو مفيش، فيه بدائل محلية. -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#081a33">
+<title>وزتي — حكايتنا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
+<body>
+<div class="progress"><span id="progressBar"></span></div>
+<nav class="timeline-nav" aria-label="مراحل الرحلة">
+  <button data-target="start">البداية</button><button data-target="years">8 سنين</button>
+  <button data-target="memories">ذكريات</button><button data-target="date">4 April</button>
+  <button data-target="understood">فهمت</button><button data-target="love">لسه بحبك</button>
+  <button data-target="newchapter">فصل جديد</button>
+</nav>
 
-<body data-mood="night">
-  <!-- الصفحة مقفولة لحد ما تدوس "نبدأ؟" -->
-  <script>document.documentElement.classList.add('is-locked');</script>
-
-  <!-- ===== الخلفية: سما + نجوم متحركة ===== -->
-  <div class="backdrop" aria-hidden="true">
-    <div class="sky sky--base"></div>
-    <div class="sky sky--glow"></div>
-    <canvas id="stars"></canvas>
+<main>
+<section id="start" class="hero section">
+  <div class="stars"></div><div class="glow"></div>
+  <div class="hero-content reveal">
+    <div class="tiny">منير → زينب</div>
+    <h1>وزتي...</h1>
+    <p>قبل ما نكمل، عايزك تاخدي كام دقيقة وتفتكري معايا حكاية بقالها حوالي 8 سنين.</p>
+    <button class="primary next" data-next="years">نبدأ؟ <span>♥</span></button>
   </div>
+  <div class="scroll-hint">اسحبي لتحت ↓</div>
+</section>
 
-  <!-- ===== شريط التقدم (يتعبى من script.js) ===== -->
-  <header class="chrome" id="chrome">
-    <div class="chrome__inner">
-      <p class="chrome__label" id="chapterLabel" aria-live="polite"></p>
-      <nav aria-label="مراحل الحكاية">
-        <ol class="steps" id="steps"></ol>
-      </nav>
+<section id="years" class="section dark">
+  <div class="content narrow reveal">
+    <div class="chapter">01 / 07</div>
+    <div class="big-number" data-number="8">8</div>
+    <h2>8 سنين مش رقم صغير...</h2>
+    <p>8 سنين فيهم كلام، ضحك، زعل، مواقف، خوف، أمان، أحلام... وحاجات كتير يمكن عمرنا ما عرفنا نوصفها.</p>
+    <p>ومهما حصل بينا، صعب أتعامل مع الـ8 سنين دول كأنهم مجرد وقت وعدّى.</p>
+  </div>
+</section>
+
+<section id="memories" class="section">
+  <div class="content wide reveal">
+    <div class="chapter">02 / 07</div><h2>فاكرة؟</h2>
+    <p class="lead">في حاجات صغيرة بتفضل كبيرة جوا الواحد.</p>
+    <div class="memory-line">
+      <article class="memory"><span class="memory-dot">01</span><div><small>ذكرى</small><h3>القاهرة</h3><p>خروجة القاهرة... مش عارف إيه اللي فضل في ذاكرتي أكتر، تفاصيل اليوم نفسه، ولا إحساس إننا كنا بنعمل ذكرى جديدة سوا.</p></div></article>
+      <article class="memory"><span class="memory-dot">02</span><div><small>ذكرى</small><h3>أول قعدة</h3><p>أول مرة قعدنا مع بعض في الأتالية عند أختك. يمكن وقتها مكنتش عارف إن القعدة دي هتبقى واحدة من الحاجات اللي هفتكرها بعد سنين.</p></div></article>
+      <article class="memory"><span class="memory-dot">03</span><div><small>ذكرى</small><h3>السدادات</h3><p>اليوم اللي اتخبطتي فيه... وأكتر حاجة فاكرها مش الخبطة نفسها، قد ما فاكر خوفك عليا وخضتك وقتها. يمكن دي من اللحظات الصغيرة اللي عمرها ما كانت صغيرة بالنسبالي.</p></div></article>
+      <article class="memory"><span class="memory-dot">04</span><div><small>ذكرى</small><h3>طريق الرجوع</h3><p>إحنا راجعين من القاهرة، الأغاني شغالة، وإحنا بنسمع أصالة... مكنتش محتاج وقتها أي حاجة زيادة عن إنك تكوني جنبي.</p></div></article>
+      <article class="memory"><span class="memory-dot">05</span><div><small>ذكرى</small><h3>الشقة</h3><p>فاكرة لما اخترنا كل تفصيلة في الشقة سوا؟ لون، حاجة، تفصيلة صغيرة... كل حاجة كان وراها حلم.</p><strong>والأجمل إن لسه في حاجات هنكملها. 💙</strong></div></article>
     </div>
-  </header>
-
-  <!-- ===== مشغل الموسيقى =====
-       حط أغنية أصالة هنا:  assets/music.mp3
-       (لو الملف مش موجود، المشغل هيختفي والصفحة هتشتغل عادي.) -->
-  <div class="player" id="player" role="group" aria-label="الموسيقى">
-    <button class="player__btn" id="musicBtn" type="button" aria-label="تشغيل الموسيقى" aria-pressed="false">
-      <svg class="ico-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 5.5v13l10.5-6.5z" fill="currentColor"/></svg>
-      <svg class="ico-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.4v14H7zM13.6 5H17v14h-3.4z" fill="currentColor"/></svg>
-    </button>
-    <svg class="player__note" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l10-2v12"/><circle cx="6.6" cy="18" r="2.4"/><circle cx="16.6" cy="16" r="2.4"/></svg>
-    <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-    <label class="player__vol">
-      <span class="sr-only">مستوى الصوت</span>
-      <input id="musicVol" type="range" min="0" max="100" value="45">
-    </label>
   </div>
-  <audio id="music" loop preload="auto"></audio>
+</section>
 
-  <noscript><p style="padding:2rem;text-align:center;color:#fff">الصفحة دي محتاجة JavaScript عشان تشتغل.</p></noscript>
+<section id="date" class="section date-section dark">
+  <div class="content reveal">
+    <div class="chapter">03 / 07</div>
+    <div class="date-card"><span>our chapter</span><strong>4 April</strong><i>♥</i></div>
+    <h2>اليوم اللي بدأت فيه مرحلة جديدة من حكايتنا.</h2>
+    <p>وفي وسط كل اللي حصل بعده، التاريخ ده لسه له مكان خاص عندي.</p>
+  </div>
+</section>
 
-  <main id="journey">
+<section id="understood" class="section dark calmer">
+  <div class="content narrow reveal">
+    <div class="chapter">04 / 07</div><h2>عايز أقولك حاجة بصراحة...</h2>
+    <div class="line-reveal"><p>أنا اتغيرت.</p><p>مش بقول إني بقيت شخص تاني...</p><p>بس فهمت حاجات مكنتش فاهمها.</p><p>فهمت إن الحب مش بس إنك تحب حد...</p><p>الحب كمان إنك تفهمه، تسمعه، تطمنه، وتعرف إمتى تتمسك وإمتى تهدى.</p><p>وفهمت إن في حاجات كان ممكن أتعامل معاها بشكل أحسن.</p></div>
+  </div>
+</section>
 
-    <!-- ============ 01 — البداية ============ -->
-    <section class="chapter chapter--opening" id="opening" data-chapter="1" data-mood="night" aria-label="البداية">
-      <div class="chapter__inner">
-        <div class="seq">
-          <!-- اللقب بيتعبى من CONFIG.nickname في script.js -->
-          <h1 class="ln t-xl glow-text" data-delay="900"><span data-nick>وزتي</span>...</h1>
-          <p class="ln t-lead" data-delay="2000">قبل ما نكمل، عايزك تاخدي كام دقيقة وتفتكري معايا حكاية بقالها حوالي 8 سنين.</p>
-          <div class="ln" data-delay="2000">
-            <button class="btn btn--start" id="startBtn" type="button">نبدأ؟ ❤️</button>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="love" class="section love-section">
+  <div class="content narrow reveal">
+    <div class="chapter">05 / 07</div><h2>ولسه...</h2>
+    <div class="heart">♥</div><h3>لسه بحبك.</h3>
+    <p>مش حب بيطلب منك تنسي اللي حصل.</p><p>ومش حب بيضغط عليكي تاخدي قرار.</p><p>هو بس حب بيقولك إنك لسه غالية عندي.</p>
+    <p class="emphasis">وإن بعد كل السنين دي... لسه نفسي تكوني إنتِ.</p>
+  </div>
+</section>
 
-    <!-- ============ 02 — 8 سنين ============ -->
-    <section class="chapter chapter--years" id="years" data-chapter="2" data-mood="night" aria-labelledby="years-title" hidden>
-      <div class="chapter__inner">
-        <h2 class="sr-only" id="years-title">8 سنين</h2>
+<section id="newchapter" class="section dark new-section">
+  <div class="content narrow reveal">
+    <div class="chapter">06 / 07</div>
+    <h2>مش عايز نرجع زي الأول...</h2>
+    <p>أنا نفسي ندي للحكاية فرصة تانية.</p>
+    <div class="stack"><span>مش عشان نرجع نعيش نفس الحكاية.</span><span>عشان نكتب حكاية جديدة.</span><b>أهدى.</b><b>أنضج.</b><b>وأحن.</b></div>
+    <p>أنا مش بطلب نرجع للماضي.<br>أنا نفسي نبدأ من جديد، بس المرة دي وإحنا فاهمين بعض أكتر.</p>
+  </div>
+</section>
 
-        <div class="years__num" role="img" aria-label="8"><span id="yearsCount" aria-hidden="true">8</span></div>
-
-        <div class="years__line" aria-hidden="true">
-          <span class="years__cap">البداية</span>
-          <div class="years__track">
-            <i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i>
-            <i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i>
-          </div>
-          <span class="years__cap">النهارده</span>
-        </div>
-
-        <div class="seq">
-          <p class="ln t-lead" data-delay="2800">8 سنين مش رقم صغير...</p>
-          <p class="ln t-body" data-delay="2200">8 سنين فيهم كلام، ضحك، زعل، مواقف، خوف، أمان، أحلام... وحاجات كتير يمكن عمرنا ما عرفنا نوصفها.</p>
-          <p class="ln t-lead" data-delay="2800">ومهما حصل بينا، صعب أتعامل مع الـ8 سنين دول كأنهم مجرد وقت وعدّى.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 03 — ذكريات ============
-         الكروت بتتبني من CONFIG.memories في script.js -->
-    <section class="chapter chapter--memories" id="memories" data-chapter="3" data-mood="night" aria-labelledby="memories-title" hidden>
-      <div class="chapter__inner chapter__inner--wide">
-        <header class="reveal memories__head">
-          <h2 class="t-display" id="memories-title">فاكرة؟</h2>
-        </header>
-
-        <div class="road" id="road">
-          <span class="road__fill" aria-hidden="true"></span>
-          <span class="road__lamp" aria-hidden="true"></span>
-          <ol class="road__list" id="roadList"></ol>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 04 — 4 April ============ -->
-    <section class="chapter chapter--april" id="april" data-chapter="4" data-mood="night" aria-labelledby="april-title" hidden>
-      <div class="chapter__inner">
-        <h2 class="sr-only" id="april-title">4 April</h2>
-
-        <div class="date" role="img" aria-label="4 April">
-          <span class="date__glow" aria-hidden="true"></span>
-          <span class="date__day" aria-hidden="true">4</span>
-          <span class="date__month" aria-hidden="true">April</span>
-          <span class="date__rule" aria-hidden="true"></span>
-        </div>
-
-        <div class="seq">
-          <p class="ln t-lead" data-delay="3000">اليوم اللي بدأت فيه مرحلة جديدة من حكايتنا.</p>
-          <p class="ln t-body" data-delay="2400">وفي وسط كل اللي حصل بعده، التاريخ ده لسه له مكان خاص عندي.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 05 — الجزء الصادق ============ -->
-    <section class="chapter chapter--honest" id="honest" data-chapter="5" data-mood="quiet" aria-labelledby="honest-title" hidden>
-      <div class="chapter__inner">
-        <div class="seq">
-          <h2 class="ln t-display" id="honest-title" data-delay="600">عايز أقولك حاجة بصراحة...</h2>
-          <p class="ln t-xl" data-type data-delay="2600">أنا اتغيرت.</p>
-          <p class="ln t-lead" data-delay="3200">مش بقول إني بقيت شخص تاني...</p>
-          <p class="ln t-lead" data-delay="2600">بس فهمت حاجات مكنتش فاهمها.</p>
-          <p class="ln t-lead" data-delay="3000">فهمت إن الحب مش بس إنك تحب حد...</p>
-          <p class="ln t-lead" data-delay="2200">الحب كمان إنك تفهمه، تسمعه، تطمنه، وتعرف إمتى تتمسك وإمتى تهدى.</p>
-          <p class="ln t-body" data-delay="3000">وفهمت إن في حاجات كان ممكن أتعامل معاها بشكل أحسن.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 06 — لسه بحبك ============ -->
-    <section class="chapter chapter--love" id="love" data-chapter="6" data-mood="quiet" aria-label="لسه بحبك" hidden>
-      <div class="chapter__inner">
-        <div class="seq">
-          <p class="ln t-xl" data-delay="700">ولسه...</p>
-          <p class="ln t-xl glow-text" data-type data-hearts data-delay="3000">لسه بحبك.</p>
-          <p class="ln t-lead" data-delay="3200">مش حب بيطلب منك تنسي اللي حصل.</p>
-          <p class="ln t-lead" data-delay="2200">ومش حب بيضغط عليكي تاخدي قرار.</p>
-          <p class="ln t-lead" data-delay="2400">هو بس حب بيقولك إنك لسه غالية عندي.</p>
-          <p class="ln t-body" data-delay="3000">وإن بعد كل السنين دي...</p>
-          <p class="ln t-lead" data-delay="1900">لسه نفسي تكوني إنتِ.</p>
-          <div class="ln love__heart" data-delay="1800" aria-hidden="true">
-            <svg viewBox="0 0 64 60" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M32 54C10 38 6 26 11 17c5-9 16-8 21-1 5-7 16-8 21 1 5 9 1 21-21 37z"/></svg>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 07 — مش رجوع، بداية جديدة ============ -->
-    <section class="chapter chapter--again" id="again" data-chapter="7" data-mood="quiet" aria-labelledby="again-title" hidden>
-      <div class="chapter__inner">
-        <div class="seq">
-          <h2 class="ln t-display" id="again-title" data-delay="600">مش عايز نرجع زي الأول...</h2>
-          <p class="ln t-lead" data-delay="2600">أنا نفسي ندي للحكاية فرصة تانية.</p>
-          <p class="ln t-lead" data-delay="3000">مش عشان نرجع نعيش نفس الحكاية.</p>
-          <p class="ln t-lead" data-delay="2200">عشان نكتب حكاية جديدة.</p>
-          <div class="words">
-            <span class="ln word" data-delay="2800">أهدى.</span>
-            <span class="ln word" data-delay="1300">أنضج.</span>
-            <span class="ln word" data-delay="1300">وأحن.</span>
-          </div>
-          <p class="ln t-body" data-delay="2800">أنا مش بطلب نرجع للماضي.</p>
-          <p class="ln t-lead" data-delay="2200">أنا نفسي نبدأ من جديد، بس المرة دي وإحنا فاهمين بعض أكتر.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 08 — السؤال الأخير ============ -->
-    <section class="chapter chapter--question" id="question" data-chapter="7" data-mood="hush" aria-label="السؤال الأخير" hidden>
-      <div class="chapter__inner">
-        <div class="seq">
-          <!-- .stage = السطور بتتبدل في نفس المكان -->
-          <div class="stage">
-            <p class="ln t-lead" data-delay="900">بعد كل ده...</p>
-            <p class="ln t-lead" data-delay="3000">بعد 8 سنين...</p>
-            <h2 class="ln t-display keep" data-delay="3200">مستعدة نكتب فصل جديد؟ ❤️</h2>
-          </div>
-
-          <div class="ln choices" data-delay="2400">
-            <div class="choices__main">
-              <button class="btn btn--choice btn--yes" type="button">أيوه ❤️</button>
-              <button class="btn btn--choice btn--yes" type="button">أكيد 🥹</button>
-              <button class="btn btn--choice btn--yes" type="button">طبعًا 💙</button>
-            </div>
-            <!-- لعبة بس: بتراوغ كام مرة، وبعدين بتسيب نفسها تتضغط -->
-            <div class="maybe-zone" id="maybeZone">
-              <div class="maybe-wrap" id="maybeWrap">
-                <button class="btn btn--ghost" id="maybeBtn" type="button">يمكن...</button>
-              </div>
-            </div>
-            <p class="maybe-note" id="maybeNote" role="status" aria-live="polite"></p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== شاشة الرد الكاملة (أيوه / يمكن). المحتوى بيتبني من script.js ===== -->
-  <div class="finale" id="finale" role="dialog" aria-modal="true" aria-label="الرد" hidden>
-    <canvas class="finale__fx" id="finaleFx" aria-hidden="true"></canvas>
-    <button class="finale__close" id="finaleClose" type="button" aria-label="إغلاق">
-      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-    <div class="finale__scroll" id="finaleScroll" tabindex="-1">
-      <div class="finale__body seq" id="finaleBody"></div>
+<section id="question" class="section final">
+  <div class="final-glow"></div>
+  <div class="content narrow reveal">
+    <div class="chapter">07 / 07</div>
+    <p>بعد كل ده...</p><p>بعد 8 سنين...</p>
+    <h2>مستعدة نكتب فصل جديد؟ <span>♥</span></h2>
+    <div class="answers" id="answers">
+      <button class="answer yes" data-answer="positive">أيوه ❤️</button>
+      <button class="answer yes" data-answer="positive">أكيد 🥹</button>
+      <button class="answer yes" data-answer="positive">طبعًا 💙</button>
+      <button class="answer maybe" id="maybe">يمكن...</button>
     </div>
-    <button class="finale__skip" id="finaleSkip" type="button">عرض الكل</button>
+    <div id="response" class="response" aria-live="polite"></div>
   </div>
+</section>
+</main>
 
-  <script src="script.js"></script>
+<div class="music">
+  <audio id="audio" loop preload="none"><source src="assets/music.mp3" type="audio/mpeg"></audio>
+  <button id="musicBtn" aria-label="تشغيل الموسيقى">♫</button>
+  <span id="musicText">موسيقى الحكاية</span>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <button class="close" id="close">×</button>
+    <div class="mini-hearts">♥ ♥ ♥</div>
+    <p>يمكن دي أبسط كلمة...</p>
+    <h2>بس بالنسبة لي، معناها بداية حكاية جديدة.</h2>
+    <p>يمكن الحكاية اتلخبطت في النص، ويمكن إحنا الاتنين اتغيرنا...</p>
+    <p>بس بعد 8 سنين، لسه في جزء جوايا شايف إن أجمل حاجة في الحكاية دي لسه ما خلصتش.</p>
+    <p>أنا مش بطلب نرجع للماضي... أنا نفسي نبدأ من جديد، بس المرة دي وإحنا فاهمين بعض أكتر.</p>
+    <p>ولو لسه في مكان ليا في قلبك... أنا مستعد أكمل الحكاية معاكي، خطوة بخطوة.</p>
+    <h3>نكتبها سوا؟ ❤️</h3><small>— منير</small>
+  </div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
